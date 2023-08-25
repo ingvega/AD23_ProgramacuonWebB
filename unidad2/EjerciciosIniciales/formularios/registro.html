@@ -10,6 +10,23 @@
     <h1>Registrar usuario</h1>
     <form action="procesarRegistro.html" method="get">
         <div>
+            <label>Solo lectura
+                <input type="text" name="txtSoloLectura" 
+                value="Valor de solo lectura" readonly>
+            </label>
+        </div>
+        <input type="hidden" name="txtOculto" 
+                value="Valor Oculto">
+        <div>
+            <label>* Número de control
+                <input type="text" name="txtNoControl" 
+                placeholder="Num Control" required
+                pattern="[SGTMDEACsgtmdeac][0-9]{2}12[0-9]{4}"
+                maxlength="9" minlength="9"
+                >
+            </label>
+        </div>
+        <div>
             <label>* Nombre
                 <input type="text" name="txtNombre" 
                 placeholder="Ingresa tu nombre" required
@@ -25,7 +42,7 @@
         </div>
         <div>
             <label for="txtTelefono">Teléfono</label>
-            <input type="number" id="txtTelefono" value="4454577468" name="txtTelefono" placeholder="Teléfono (opcional)">
+            <input type="tel" id="txtTelefono" value="4454577468" pattern="[0-9]{10}" name="txtTelefono" placeholder="Teléfono (opcional)">
         </div>
         <div>
             <label for="txtCorreo">* Correo</label>
@@ -62,9 +79,21 @@
         </div>
         <div>
             <label for="txtComentarios">* Comentarios</label>
-            <textarea name="txtComentarios id="" cols="100" rows="5"></textarea>
+            <textarea name="txtComentarios id=" cols="100" rows="5"></textarea>
         </div>
-        <button>Registrar</button>
+        <fieldset>
+            <legend>Interes</legend>
+            <label><input type="checkbox" name="intereses" value="Tecnologia" required>Tecnología</label>
+            <label><input type="checkbox" name="intereses" value="Juegos">Juegos</label>
+            <label><input type="checkbox" name="intereses" value="Otros">Otros</label>
+        </fieldset>
+        <input type="submit" value="Registrar">
+        <button>
+            <img src="../imgs/send.png" alt="">
+            Registrar
+        </button>
+        <button type="button" onclick="alert('Click en botón común')">Botón común</button>
+        <button type="reset">Limpiar</button>
     </form>
 </body>
 </html>
