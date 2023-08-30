@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*CSS (Cascade Style sheet)*/
+        /*Selector universal*/
+        *{
+            /*font-size: 12px;*/
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        /*Selectores de etiqueta*/
+        h1{
+            font-size: 40px;
+        }
+        div{
+            /*Shorthand (acceso directo)*/
+            border: 1px solid #555;
+            margin: 10px; /*10px todo alrededor*/
+            margin: 20px 10px;/*20px arriba y abajo 10px a los lados*/
+            /*20px arriba 10px derecha 20px abajo 10px izquierda*/
+            margin: 20px 10px 20px 10px;
+        }
+        /*ID*/  
+        #contenido{
+            padding: 10px 20px;
+        }  
+</style>
+</head>
+<body>
+    <header>
+        <h1>Mi primera página</h1>
+    </header>
+    <div id="contenido">
+        <h1 class="azul" style="color:rgb(8, 8, 147);background-color: #bbb">Contenido de bienvenida</h1>
+        <p class="negrita">Contenido de un párrafo Contenido de un párrafo</p>
+        <p>Contenido de un párrafo Contenido de un párrafo</p>
+        <p>Contenido de un párrafo Contenido de un párrafo</p>
+        <p class="negrita azul">Contenido de un párrafo Contenido de un párrafo</p>
+    </div>
+    <div>
+        <p>Contenido de un párrafo Contenido de un párrafo</p>
+    </div>
+</body>
+</html>
