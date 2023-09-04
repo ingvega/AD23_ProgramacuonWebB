@@ -1,0 +1,14 @@
+*{
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+aside{
+    width: 30%;
+    display: inline-block;
+}
+
+main>div{
+    width: 70%;
+    display: inline-block;
+}
