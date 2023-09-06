@@ -1,5 +1,7 @@
 *{
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
+    margin:0;
+    padding:0;
     box-sizing: border-box;
 }
 /*
@@ -9,18 +11,29 @@ header img{
 }*/
 
 header{
-    background-image: url(../imgs/Logoitsur.png);
+    background-image: url(../imgs/vector-OCT-2020-116_generated.jpg);
     background-repeat: no-repeat;
     /*background-size: 83px 83px;*/
-    background-size: contain;
+    background-size: cover;
+    height: 90px;
 
 }
+header nav{
+    position: relative;
+    top: 64px;
+}
+
 header ul{
-    margin: 60px 0 0 0;
+    /*margin: 60px 0 0 0;*/
 }
 
 header li{
     display: inline-block;
+}
+
+header a{
+    text-decoration: none;
+    color:#fff;
 }
 
 main{
@@ -30,10 +43,26 @@ aside{
     width: 30%;
     display: inline-block;
     font-size:16px;
+    background-color: cornflowerblue;
 }
 
 main>div{
     width: 70%;
     display: inline-block;
     font-size:16px;
+    background-color: bisque;
+}
+
+aside,main>div{
+    height: 200px;
+}
+
+main>div>div{
+    /*font-size: 30px;*/
+    font-size: 2.5rem;
+}
+
+main>div>div>div{
+    /*font-size: 30px;*/
+    font-size: 2.5rem;
 }
