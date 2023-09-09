@@ -15,12 +15,12 @@ header{
     background-repeat: no-repeat;
     /*background-size: 83px 83px;*/
     background-size: cover;
-    height: 90px;
+    height: 10vh;
 
 }
 header nav{
     position: relative;
-    top: 64px;
+    top: 44px;
 }
 
 header ul{
@@ -54,7 +54,7 @@ main>div{
 }
 
 aside,main>div{
-    height: 200px;
+    height: 40vh;
 }
 
 main>div>div{
@@ -65,4 +65,16 @@ main>div>div{
 main>div>div>div{
     /*font-size: 30px;*/
     font-size: 2.5rem;
+}
+
+#uno,#dos{
+    width: 50vw;
+    height: 40vh;
+    border: 1px solid gray;
+    display: inline-block;
+    margin: 3px 0;
+}
+
+footer{
+    height: 10vh;
 }
