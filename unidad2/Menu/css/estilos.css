@@ -88,37 +88,98 @@ label{
 }
 
 form div{
-    /*margin: .5rem 0;*/
-    border: 2px solid #000;
-    border-bottom: none;
-    padding: 2rem;
+    padding: .5rem;
+    margin: .5rem 0;
+    /*border: 2px solid #000;
+    border-bottom: none;*/
+    
 
     /*border-top: 2px solid #000;
     border-left: 2px solid #000;
     border-right: 2px solid #000;*/
 }
-
+/*
 form div:first-child{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+*/  
 form div:last-child{
-    /*margin-top: 1.5rem;*/
+    margin-top: 1.5rem;
+    text-align: center;
+    /*
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #000;*/
 }
 
 
 form input{
     width: 100%;
-    padding: 1rem;
+    padding: .5rem;
     outline: none;
+    border-radius: 5px;
 }
 
 form input:focus,
 form input:hover{
-    outline: 3px solid red;
-    outline-offset: 3px;
+    /*outline: 3px solid red;
+    outline-offset: 3px;*/
     border: 2px solid blue;
+}
+
+button{
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.btnVerde{
+    background: rgb(3, 143, 3);
+    color: white;
+}
+
+.btnRojo{
+    background: rgb(172, 9, 9);
+    color: white;
+}
+
+.btnAzul{
+    background: rgb(32, 48, 221);
+    color: white;
+}
+
+.btnVerde:hover{
+    background: rgb(1, 104, 1);
+}
+
+.btnRojo:hover{
+    background: rgb(118, 4, 4);
+}
+
+.btnAzul:hover{
+    background: rgb(14, 24, 134);
+}
+
+#frmRegistro{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.t1{
+    width: 10%;
+}
+.t2{
+    width: 20%;
+}
+.t3{
+    width: 30%;
+}
+.t5{
+    width: 50%;
+}
+.t7{
+    width: 70%;
 }
