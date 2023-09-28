@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-<div id="fondo"></div>
+    <div id="fondo"></div>
     <div id="container">
         
         <form action="">
@@ -16,23 +16,35 @@
             <h1><img src="circulo-de-flecha.png" alt=""> Inicia sesion aqui</h1>
             <input type="text" placeholder="usuario">
             <input type="password" placeholder="contraseña">
-            <label for="">
-                <input type="checkbox">Mantener sesión iniciada
-            </label>
+            <div>
+                <input type="checkbox" id="chkSesion">
+                <label for="chkSesion">
+                    Mantener sesión iniciada
+                </label>
+            </div>
             <button>Iniciar sesion</button>
             <a href="">Olvide mi contraseña</a>
         </form>
         <form action="">
             <h1>¿Aun no tienes cuenta?</h1>
             <h1><img src="circulo-de-flecha.png" alt=""> Registrate ahora</h1>
-            <input type="text" placeholder="usuario">
+            <input type="text" placeholder="usuario" required>
             <input type="password" placeholder="contraseña">
             <input type="password" placeholder=" Confirmar contraseña">
             
             <button>Registrarme</button>
             
         </form>
+        
     </div>
-    
+    <iframe src="Introducción PW.pdf" frameborder="0">
+    </iframe>
+    <iframe src="http://surguanajuato.tecnm.mx/" frameborder="0"></iframe>
+    <div id="pseudoelementos">
+        <p class="importante">Ejemplo de texto</p>
+        <p>Ejemplo de texto</p>
+        <p>Ejemplo de texto</p>
+        <p class="nuevo">Ejemplo de texto</p>
+    </div>
 </body>
 </html>
