@@ -5,11 +5,22 @@ const z=true;
 //z=false;
 a=20.5;
 //alert(x+a);
+//Espera a que carguen todos los recursos de la página
+/*window.addEventListener("load",function(){
+    var botones=document.querySelectorAll("#opciones button");
+    for(let i=0;i<botones.length;i++){
+        botones[i].addEventListener("click", colorear);
+    }
+});*/
+//En cuanto el DOM está disponible se ejecuta aunque no 
+//estén cargados todos los recursos
+document.addEventListener("DOMContentLoaded",()=>{
+    var botones=document.querySelectorAll("#opciones button");
+    for(let i=0;i<botones.length;i++){
+        botones[i].addEventListener("click", colorear);
+    }
+});
 
-var botones=document.querySelectorAll("#opciones button");
-for(let i=0;i<botones.length;i++){
-    botones[i].addEventListener("click", colorear);
-}
 
 
 function saludar(){
@@ -18,12 +29,13 @@ function saludar(){
     alert(x+ ` texto ${y} más texto `+ nombre);
 }
 
-function colorear(boton){
+function colorear(e){
     //boton.style='background-color:red';
     debugger;
-    let botones=boton.parentElement.children;
+    let botones=this.parentElement.children;
+    //let botones=e.target.parentElement.children;
     for(let i=0;i<botones.length;i++){
         botones[i].style.backgroundColor='initial';
     }
-    boton.style.backgroundColor='red';
+    e.target.style.backgroundColor='red';
 }
