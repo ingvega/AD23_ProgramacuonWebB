@@ -19,6 +19,41 @@ document.addEventListener('DOMContentLoaded',()=>{
         personas=JSON.parse(localStorage.getItem('personas'));
     }
     llenarTabla2(personas);
+
+    document.getElementById("btnAgregar").addEventListener('click',()=>{
+        //Limpiar el form
+        let frm=document.querySelector("form");
+        let operacion=document.querySelector("form h4");
+        frm.reset();
+        operacion.innerText='Agregar';
+        document.getElementById("txtNombre").focus();
+    });
+
+    document.getElementById("btnAceptar").addEventListener('click',function(e){
+        if(document.querySelector("form").checkValidity()){
+            let personas=[];
+            if(localStorage.getItem('personas')){
+                personas=JSON.parse(localStorage.getItem('personas'));
+            }
+            let operacion=document.querySelector("form h4").innerText;
+            if(operacion=='Agregar'){
+                //Llenar un objeto con los elementos de la caja de texto
+                let clave=0;
+                if(personas.length>0){
+                    clave=personas[personas.length-1].clave;
+                }          
+                clave++;      
+                let nuevaPersona={
+                    clave:clave,
+                    nombre:document.getElementById("txtNombre").value,
+                    edad:document.getElementById("txtEdad").value
+                };
+                personas.push(nuevaPersona);
+                localStorage.setItem('personas',JSON.stringify(personas));
+                alert('Registro añadido');
+            }
+        }
+    });
 });
 
 function llenarTabla2(datos){
