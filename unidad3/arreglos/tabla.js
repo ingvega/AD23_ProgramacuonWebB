@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 function llenarTabla2(datos){
     let fila;
     let tbody=document.querySelector("#listaPersonas tbody");
+    tbody.innerHTML='';
     datos.forEach(p => {
         fila=document.createElement('tr');
         let celda=document.createElement('td');
@@ -84,7 +85,7 @@ function llenarTabla2(datos){
 
         let btnEditar=document.createElement('button');
         btnEditar.innerText='Editar';
-        btnEditar.addEventListener('click',()=>{
+        btnEditar.addEventListener('click',(e)=>{
             //Cargar la información almacenada
             let personas=localStorage.getItem('personas')?
             JSON.parse(localStorage.getItem('personas')):[];
@@ -103,8 +104,14 @@ function llenarTabla2(datos){
 
         let btnEliminar=document.createElement('button');
         btnEliminar.innerText='Eliminar';
-        debugger;
-        btnEliminar.onclick='eliminar('+p.clave+')';
+        
+        /*btnEliminar.value=p.clave;
+        btnEliminar.onclick = eliminar;*/
+        btnEliminar.onclick=function(){
+            this.disabled=true;
+            eliminar(p.clave);
+            this.disabled=false;
+        };
         
         celda=document.createElement('td');
         celda.appendChild(btnEditar);
@@ -115,8 +122,28 @@ function llenarTabla2(datos){
     });
     
 }
-
-function eliminar(clave){
+function eliminar(clave){//,boton){
+    debugger;
+    
+    //Cargar la información almacenada
+    let personas=localStorage.getItem('personas')?
+    JSON.parse(localStorage.getItem('personas')):[];
+    //Buscar la persona que tenga la clave de la fila
+    let index=personas.findIndex(item=>item.clave==clave);
+    let persona=personas[index];
+    if(confirm('Está a punto de eliminar a ' + persona.nombre + 
+    ' ¿desea continuar?')){
+        personas.splice(index,1);
+        localStorage.setItem('personas',JSON.stringify(personas));
+        alert('registro eliminado');
+        llenarTabla2(personas);
+    }
+    console.log(this);
+}
+function eliminar2(e){
+    let clave=this.value;
+     clave=e.target.value;
+    debugger;
      //Cargar la información almacenada
      let personas=localStorage.getItem('personas')?
      JSON.parse(localStorage.getItem('personas')):[];
