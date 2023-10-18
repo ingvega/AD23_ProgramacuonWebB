@@ -13,7 +13,7 @@ function inicializarDatos(){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    inicializarDatos();
+    //inicializarDatos();
     let personas=[];
     if(localStorage.getItem('personas')){
         personas=JSON.parse(localStorage.getItem('personas'));
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         frm.reset();
         operacion.innerText='Agregar';
         document.getElementById("txtNombre").focus();
+
     });
 
     document.getElementById("btnAceptar").addEventListener('click',function(e){

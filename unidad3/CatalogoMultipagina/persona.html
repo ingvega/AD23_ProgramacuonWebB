@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <h4></h4>
+        <div>
+            <input type="text" id="txtClave" placeholder="Clave" readonly>
+        </div>
+        <div>
+            <input type="text" id="txtNombre" placeholder="Nombre completo" required>
+        </div>
+        <div>
+            <input type="text" id="txtEdad" pattern="\d{1,2}" placeholder="Edad" required>
+        </div>
+        <div>
+            <button id="btnAceptar">Aceptar</button>
+            <button type="reset" id="btnLimpiar">Limpiar</button>
+        </div>
+    </form>
+    <script src="persona.js"></script>
+</body>
+</html>
