@@ -27,6 +27,22 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     });
 
+    const myModal = document.getElementById('mdlConfirmacion')
+    myModal.addEventListener('show.bs.modal', event => {
+        //Cargar el nombre de la persona a eliminar
+        let personas=localStorage.getItem('personas')?
+        JSON.parse(localStorage.getItem('personas')):[];
+        let clave=event.relatedTarget.value;
+        //Buscar la persona que tenga la clave de la fila
+        let index=personas.findIndex(item=>item.clave==clave);
+        let persona=personas[index];
+        document.getElementById("spnPersona").innerText=
+            persona.nombre;
+        
+        //Cargar la clave en el value del botón "SI"
+        document.getElementById("btnConfirmar").value=clave;
+    });
+
 });
 
 function llenarTabla2(datos){
@@ -58,12 +74,14 @@ function llenarTabla2(datos){
         let btnEliminar=document.createElement('button');
         btnEliminar.innerText='Eliminar';
         btnEliminar.className='btn btn-danger';
-        /*btnEliminar.value=p.clave;
-        btnEliminar.onclick = eliminar;*/
+        btnEliminar.value=p.clave;
+        /*btnEliminar.onclick = eliminar;*/
         btnEliminar.onclick=function(){
-            this.disabled=true;
-            eliminar(p.clave);
-            this.disabled=false;
+            //this.disabled=true;
+            const myModal = new bootstrap.Modal('#mdlConfirmacion');
+              myModal.show(this);
+            //eliminar(p.clave);
+            //this.disabled=false;
         };
         
         celda=document.createElement('td');
