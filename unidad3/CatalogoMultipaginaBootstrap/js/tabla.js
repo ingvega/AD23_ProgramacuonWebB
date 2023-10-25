@@ -1,3 +1,4 @@
+let mdlConfirmacion;
 function inicializarDatos(){
     if(!localStorage.getItem('personas')){
         //Solo guardar si no se ha guardado personas antes
@@ -27,8 +28,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     });
 
-    const myModal = document.getElementById('mdlConfirmacion')
-    myModal.addEventListener('show.bs.modal', event => {
+    document.getElementById("btnConfirmar").onclick=eliminar;
+
+    mdlConfirmacion = document.getElementById('mdlConfirmacion')
+    mdlConfirmacion.addEventListener('show.bs.modal', event => {
         //Cargar el nombre de la persona a eliminar
         let personas=localStorage.getItem('personas')?
         JSON.parse(localStorage.getItem('personas')):[];
@@ -78,8 +81,8 @@ function llenarTabla2(datos){
         /*btnEliminar.onclick = eliminar;*/
         btnEliminar.onclick=function(){
             //this.disabled=true;
-            const myModal = new bootstrap.Modal('#mdlConfirmacion');
-              myModal.show(this);
+            myModal = new bootstrap.Modal('#mdlConfirmacion');
+            myModal.show(this);
             //eliminar(p.clave);
             //this.disabled=false;
         };
@@ -93,19 +96,19 @@ function llenarTabla2(datos){
     });
     
 }
-function eliminar(clave){//,boton){
-    //Cargar la información almacenada
+function eliminar(){
+    
     let personas=localStorage.getItem('personas')?
     JSON.parse(localStorage.getItem('personas')):[];
-    //Buscar la persona que tenga la clave de la fila
-    let index=personas.findIndex(item=>item.clave==clave);
-    let persona=personas[index];
-    if(confirm('Está a punto de eliminar a ' + persona.nombre + 
-    ' ¿desea continuar?')){
+    
+    let index=personas.findIndex(item=>item.clave==this.value);
+    if(index>=0){
         personas.splice(index,1);
         localStorage.setItem('personas',JSON.stringify(personas));
         alert('registro eliminado');
-        llenarTabla2(personas);
+    }else{
+        alert('registro no encontrado');
     }
-    console.log(this);
+    llenarTabla2(personas);
+
 }
