@@ -14,7 +14,10 @@ function inicializarDatos(){
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    //inicializarDatos();
+
+    
+
+    inicializarDatos();
     let personas=[];
     if(localStorage.getItem('personas')){
         personas=JSON.parse(localStorage.getItem('personas'));
@@ -105,10 +108,30 @@ function eliminar(){
     if(index>=0){
         personas.splice(index,1);
         localStorage.setItem('personas',JSON.stringify(personas));
-        alert('registro eliminado');
+        mostrarMensaje('Registro eliminado','success');
     }else{
         alert('registro no encontrado');
     }
     llenarTabla2(personas);
 
+}
+
+/**
+ * Muestra una notificación cerrable y que se muestra por una cantidad de
+ * 5 segundos
+ * @param {*} mensaje Texto a mostrar en la notificación
+ * @param {*} tipo Puede ser "success" "danger" "warning" "info"
+ */
+function mostrarMensaje(mensaje,tipo){
+    let notificacion=document.createElement("div");
+    notificacion.innerHTML='<p>'+mensaje+'</p>'+
+    '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+    //configurar la clase (color)
+    notificacion.className='alert alert-dismissible fade show alert-'+tipo;
+    
+    document.querySelector('.container').insertBefore(notificacion,
+    document.getElementById("btnAgregar"));
+
+    //colocar el contador y ocultarla (quitarl la clase show)
+    setTimeout(()=>{notificacion.classList.remove('show')},5000);
 }
