@@ -33,14 +33,20 @@
         </div>
       </nav>
       <div class="container my-3">
-        <form>
+        <form class="needs-validation" novalidate>
             <h4 class="text-center mb-2"></h4>
             <div class="row">
                 <div class="col-4">
                     <input type="text" class="form-control" id="txtClave" placeholder="Clave" readonly>
                 </div>
                 <div class="col-8">
-                    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre completo" required>
+                    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre completo" minlength="5" required>
+                    <div class="invalid-feedback">
+                      <ul>
+                        <li>El nombre es obligatorio</li>
+                        <li>Debe tener al menos 5 caracteres</li>
+                      </ul>
+                    </div>
                 </div>
             
                 <div class="col-4">

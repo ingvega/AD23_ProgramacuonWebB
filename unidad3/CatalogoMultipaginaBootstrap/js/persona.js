@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         document.querySelector("form h4").innerText='Agregar';
     }
     document.getElementById("btnAceptar").addEventListener('click',function(e){
+        document.querySelector("form").classList.add("was-validated");
         if(document.querySelector("form").checkValidity()){
             let personas=[];
             if(localStorage.getItem('personas')){
@@ -42,6 +43,8 @@ document.addEventListener('DOMContentLoaded',()=>{
                 //if('1'==1)->true
                 //if('1'===1)->false
             }
+        }else{
+            e.preventDefault();
         }
     });
 });

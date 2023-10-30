@@ -124,6 +124,7 @@ function eliminar(){
  */
 function mostrarMensaje(mensaje,tipo){
     let notificacion=document.createElement("div");
+    notificacion.id="divNotificacion";
     notificacion.innerHTML='<p>'+mensaje+'</p>'+
     '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
     //configurar la clase (color)
@@ -133,5 +134,13 @@ function mostrarMensaje(mensaje,tipo){
     document.getElementById("btnAgregar"));
 
     //colocar el contador y ocultarla (quitarl la clase show)
-    setTimeout(()=>{notificacion.classList.remove('show')},5000);
+    setTimeout(()=>{
+        //No destruye la alerta, solo la oculta y se van acumulando
+        //notificacion.classList.remove('show')
+        if(document.getElementById('divNotificacion')){
+            notificacion.remove();
+            /*const alert = bootstrap.Alert.getOrCreateInstance('#divNotificacion')
+            alert.close()*/
+        }
+    },5000);
 }
