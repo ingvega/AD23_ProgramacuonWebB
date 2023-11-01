@@ -97,9 +97,6 @@ function llenarTabla2(datos){
 
         tbody.appendChild(fila);
     });
-
-    new DataTable('#listaPersonas');
-
     
 }
 function eliminar(){
@@ -112,7 +109,6 @@ function eliminar(){
         personas.splice(index,1);
         localStorage.setItem('personas',JSON.stringify(personas));
         mostrarMensaje('Registro eliminado','success');
-        location.reload();
     }else{
         alert('registro no encontrado');
     }
