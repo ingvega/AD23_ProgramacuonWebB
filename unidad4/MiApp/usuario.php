@@ -22,10 +22,11 @@
     </pre>
     <form method="post">
         <p>
-        <input type="text" id="txtNombre" name="Nombre" placeholder="Nombre" required>
+        <input type="text" id="txtNombre" name="Nombre" placeholder="Nombre" 
+        value="<?php echo ISSET($_POST["Nombre"])?$_POST["Nombre"]:"" ?>" required>
         </p>
         <p>
-            <input type="text" id="txtApellido1" name="Apellido1" placeholder="Primer apellido" required>
+            <input type="text" id="txtApellido1" name="Apellido1" value="<?= ISSET($_POST["Apellido1"])?$_POST["Apellido1"]:"" ?>" placeholder="Primer apellido" required>
         </p>
         <p>
             <input type="text" id="txtApellido2" name="Apellido2" placeholder="Segundo apellido">
