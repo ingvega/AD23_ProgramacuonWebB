@@ -16,9 +16,7 @@
     </style>
 </head>
 <body>
-    <?php
-      include('menu.php');
-    ?>
+    <?php include('menu.php'); ?>
       <div class="container">
         
         <button type="button" class="btn btn-success mt-5 mb-3" id="btnAgregar">Agregar</button>

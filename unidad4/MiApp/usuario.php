@@ -9,8 +9,18 @@
 <body>
     <?php
       include('menu.php');
+      /*echo $_GET;
+      echo $_POST;
+      echo $_REQUEST;*/
     ?>
-    <form>
+    <pre>
+    <?php
+      var_dump($_GET);
+      print_r($_POST);
+      var_dump($_REQUEST);
+    ?>
+    </pre>
+    <form method="post">
         <p>
         <input type="text" id="txtNombre" name="Nombre" placeholder="Nombre" required>
         </p>
@@ -54,13 +64,13 @@
                 <option value="1">Soltero</option>
                 <option value="2">Casado</option>
                 <option value="3">Divorciado</option>
-                <option>Viudo</option>
-                <option>Unión Libre</option>
+                <option value="4">Viudo</option>
+                <option  value="5">Unión Libre</option>
             </select>
             </p>
         <p>
         <label>
-        <input type="checkbox" name="Terminos" >
+        <input type="checkbox" name="Terminos" value="terminos">
         Acepto los términos</label>
         </p>
         

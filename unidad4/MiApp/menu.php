@@ -14,7 +14,7 @@
                   Catálogos
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="tabla.html">Personas</a></li>
+                  <li><a class="dropdown-item" href="listaPersonas.php">Personas</a></li>
                 </ul>
               </li>
             </ul>

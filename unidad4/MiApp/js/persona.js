@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 localStorage.setItem('personas',JSON.stringify(personas));
                 alert('Registro añadido');
                 e.preventDefault();
-                location.replace('tabla.html');
+                location.replace('listaPersonas.php');
             }else if(operacion=='Editar'){
                 clave=document.getElementById("txtClave").value;
                 let index=personas.findIndex(item=>item.clave==clave);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 localStorage.setItem('personas',JSON.stringify(personas));
                 alert('Registro almacenado');
                 e.preventDefault();
-                location.replace('tabla.html');
+                location.replace('listaPersonas.php');
                 //if('1'==1)->true
                 //if('1'===1)->false
             }
@@ -63,7 +63,7 @@ function cargarPersona(clave){
         document.querySelector("form h4").innerText='Editar';
     }else{
         alert('Registro no encontrado');
-        location.replace('tabla.html');
+        location.replace('listaPersonas.php');
     }
 
 }
