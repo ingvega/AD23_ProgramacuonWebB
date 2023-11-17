@@ -29,27 +29,84 @@
         }
         return "";
      }
+
+     //Cuando POST no tiene datos es porque a penas vamos a agregar
+     $valNombre=$valApe1=$valApe2=$valEmail="";
+     if(count($_POST)>0){ //Debo validar
+        $valNombre=$valApe1=$valApe2=$valEmail="is-invalid";
+        $valido=true;
+        if(ISSET($_POST["Nombre"]) && 
+            (strlen(trim($_POST["Nombre"]))>=2 && strlen(trim($_POST["Nombre"]))<=50)
+            && preg_match("/^[a-z.A-Z\s]+$/",$_POST["Nombre"])){
+                $valNombre="is-valid";
+        }else{
+            $valido=false;
+        }
+        if(ISSET($_POST["Apellido1"]) && 
+            (strlen(trim($_POST["Apellido1"]))>=2 && strlen(trim($_POST["Apellido1"]))<=50)
+            && preg_match(preg_match("/^[a-z.A-Z\s]+$/",$_POST["Apellido1"]))){
+                $valApe1="is-valid";
+        }else{
+            $valido=false;
+        }
+        if(ISSET($_POST["Apellido2"]) && (strlen(trim($_POST["Apellido2"]))==0 ||
+            ((strlen(trim($_POST["Apellido2"]))>=2 && strlen(trim($_POST["Apellido2"]))<=50)
+            && preg_match(preg_match("/^[a-z.A-Z\s]+$/",$_POST["Apellido2"]))))){
+                $valApe2="is-valid";
+        /*}elseif(ISSET($_POST["Apellido2"]) && strlen(trim($_POST["Apellido2"]))==0){
+            $valApe2="is-valid";*/
+        }else{
+            $valido=false;
+        }
+
+     }
     ?>
     </pre>
     <form method="post">
-        <p>
-        <input type="text" id="txtNombre" name="Nombre" placeholder="Nombre" 
-        value="<?php echo ISSET($_POST["Nombre"])?$_POST["Nombre"]:"" ?>" required>
-        </p>
-        <p>
-            <input type="text" id="txtApellido1" name="Apellido1" 
+        <div>
+            <input type="text" id="txtNombre" class="form-control <?=$valNombre?>" name="Nombre" placeholder="Nombre" 
+            value="<?php echo ISSET($_POST["Nombre"])?$_POST["Nombre"]:"" ?>" required>
+            <div class="invalid-feedback">
+                <ul>
+                    <li>Campo obligario</li>
+                    <li>Valor entre 2 y 50 caracteres</li>
+                    <li>Solo valores alfabéticos</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <input type="text" id="txtApellido1" class="form-control <?=$valApe1?>" name="Apellido1" 
             value="<?= ISSET($_POST["Apellido1"])?$_POST["Apellido1"]:"" ?>" placeholder="Primer apellido" required>
-        </p>
-        <p>
-            <input type="text" id="txtApellido2" name="Apellido2" placeholder="Segundo apellido">
-        </p>
-        <p>
-            <input type="email" name="Email" id="">
-        </p>
-        <p>
+            <div class="invalid-feedback">
+                <ul>
+                    <li>Campo obligario</li>
+                    <li>Valor entre 2 y 50 caracteres</li>
+                    <li>Solo valores alfabéticos</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <input type="text" id="txtApellido2"  class="form-control <?=$valApe2?>" name="Apellido2" placeholder="Segundo apellido">
+            <div class="invalid-feedback">
+                <ul>
+                    <li>Valor entre 2 y 50 caracteres</li>
+                    <li>Solo valores alfabéticos</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <input type="email" name="Email"  class="form-control" id="" required>
+            <div class="invalid-feedback">
+                <ul>
+                    <li>Campo obligario</li>
+                    <li>Debe tener un formato de correo válido "correo@empresa.dominio"</li>
+                </ul>
+            </div>
+        </div>
+        <div>
         <input type="number" id="txtEdad" name="Edad" placeholder="Edad" required>
-        </p>
-        <p>
+        </div>
+        <div>
         <label>
             <input type="radio" id="rbtMasculino" name="Genero"
              value="Masculino" checked>
@@ -62,8 +119,8 @@
             <?= ISSET($_POST["Genero"])?($_POST["Genero"]=="Femenino"?"checked":""):"" ?>>
             Femenino
         </label>
-        </p>
-        <p>
+        </div>
+        <div>
         <h4>Intereses</h4>
         <label>
             <input type="checkbox" name="Intereses[]" value="Tecnologia" <?= marcar("Tecnologia")?>> Tecnología
@@ -77,8 +134,8 @@
         <label>
             <input type="checkbox" name="Intereses[]" value="Politica" <?= marcar("Politica")?>> Política
         </label>
-        </p>
-        <p>
+        </div>
+        <div>
             <select multiple name="EstadoCivil[]">
                 <option value="1">Soltero</option>
                 <option value="2">Casado</option>
@@ -86,12 +143,12 @@
                 <option value="4">Viudo</option>
                 <option  value="5">Unión Libre</option>
             </select>
-            </p>
-        <p>
+            </div>
+        <div>
         <label>
         <input type="checkbox" name="Terminos" value="terminos">
         Acepto los términos</label>
-        </p>
+        </div>
         
         <button>Enviar</button>
         <script src="js/bootstrap.bundle.min.js"></script>
