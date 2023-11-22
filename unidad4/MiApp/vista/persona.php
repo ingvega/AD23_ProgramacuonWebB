@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-  <?php
-    include('menu.php');
-  ?>
+      <?php
+      require('menu.php');
+      ?>
       <div class="container my-3">
         <form class="needs-validation" novalidate>
             <h4 class="text-center mb-2"></h4>

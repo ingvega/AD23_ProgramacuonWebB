@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sistema de registro ITSUR</title>
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="dt/DataTables-1.13.6/css/jquery.dataTables.min.css">-->
     <link rel="stylesheet" href="dt/DataTables-1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="dt/Buttons-2.4.2/css/buttons.bootstrap5.min.css">
+
     <style>
         .btn-verde{
             background-color: rgb(8, 218, 148)!important;
@@ -16,20 +18,37 @@
     </style>
 </head>
 <body>
-    <?php include('menu.php'); ?>
+      <?php
+      require('menu.php');
+      require_once('../datos/daoUsuario.php');
+      $dao=new DAOUsuario();
+      $listaUsuarios=$dao->obtenerTodos();
+      
+      ?>
       <div class="container">
-        
-        <button type="button" class="btn btn-success mt-5 mb-3" id="btnAgregar">Agregar</button>
-        <table id="listaPersonas" class="table table-striped table-bordered">
+        <a class="btn btn-success mt-5 mb-3" href="usuario.php">Agregar</a>
+        <table id="lista" class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Clave</th>
-                    <th>Nombre</th>
-                    <th>Edad</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Genero</th>
                     <th>Operaciones</th>
                 </tr>
             </thead>
             <tbody>
+              <?php
+                
+                foreach ($listaUsuarios as $usuario){
+                  echo "<tr><td>".trim($usuario->apellido1." ".$usuario->apellido2)." ".$usuario->nombre."</td>".
+                           "<td>".$usuario->email."</td>".
+                           "<td>".($usuario->genero=="M"?"Masculino":"Femenino")."</td>".
+                           "<td><form method='post'>".
+                              "<button formaction='usuario.php' class='btn btn-primary' name='id' value='".$usuario->id."'>Editar</button>".
+                              "<button formaction='listaUsuario.php' class='btn btn-danger' name='id' value='".$usuario->id."'>Eliminar</button>".
+                            "</form></td></tr>";
+                }
+              ?>
                 
             </tbody>
         </table>
@@ -52,12 +71,28 @@
         </div>
       </div>
     </div>
+    <div class="modal" id="mdlInformacion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Catálogo de personas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            El registro ha sido eliminado
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCerrar">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="dt/jQuery-3.7.0/jquery-3.7.0.min.js"></script>
     <script src="dt/DataTables-1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="dt/DataTables-1.13.6/js/dataTables.bootstrap5.min.js"></script>
-
+    
     <script src="dt/Buttons-2.4.2/js/dataTables.buttons.min.js"></script>
     <script src="dt/Buttons-2.4.2/js/buttons.bootstrap5.min.js"></script>
     <script src="dt/JSZip-3.10.1/jszip.min.js"></script>

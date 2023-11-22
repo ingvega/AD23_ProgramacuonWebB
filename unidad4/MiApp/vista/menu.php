@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">ITSUR</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,6 +15,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="listaPersonas.php">Personas</a></li>
+                  <li><a class="dropdown-item" href="listaUsuarios.php">Usuarios</a></li>
                 </ul>
               </li>
             </ul>
