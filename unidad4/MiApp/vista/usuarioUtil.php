@@ -22,7 +22,9 @@
         //Obtener la info del usuario con ese id
         $dao=new DAOUsuario();
         $usuario=$dao->obtenerUno($_POST["id"]);
-        
+        echo "<pre>";
+        var_dump($usuario);
+        echo "</pre>";
     }elseif(count($_POST)>1){
         $valNombre=$valApe1=$valApe2=$valEmail=$valGenero=$valIntereses=$valFechaNac=$valTerminos=$valEstadoCivil=$valPassword="is-invalid";
         $valido=true;
@@ -83,6 +85,7 @@
             $valido=false;
         }
 
+        
         $usuario->nombre=ISSET($_POST["Nombre"])?trim($_POST["Nombre"]):"";
         $usuario->apellido1=ISSET($_POST["Apellido1"])?trim($_POST["Apellido1"]):"";
         $usuario->apellido2=ISSET($_POST["Apellido2"])?trim($_POST["Apellido2"]):"";
