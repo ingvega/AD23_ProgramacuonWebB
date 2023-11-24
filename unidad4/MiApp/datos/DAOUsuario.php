@@ -93,9 +93,9 @@ class DAOUsuario
             $obj->apellido1 = $fila->apellido1;
             $obj->apellido2 = $fila->apellido2;
             $obj->email = $fila->email;
-            $obj->fechaNac = $fila->fechaNac;
+            $obj->fechaNac = DateTime::createFromFormat('Y-m-d',$fila->fechanac);
             $obj->genero = $fila->genero;
-            $obj->edoCivil = $fila->estadoCivil;
+            $obj->edoCivil = $fila->estadocivil;
             $obj->intereses = $fila->intereses?explode(",",$fila->intereses):array();
            
             return $obj;

@@ -188,11 +188,12 @@
             </div>
             <div class="row justify-content-center">
                 <button class="btn btn-primary col-4 mx-2">Guardar</button>
-                <button class="btn btn-secondary col-4 mx-2">Cancelar</button>
+                <button type="button" id="btnVolver" class="btn btn-secondary col-4 mx-2">Cancelar</button>
             </div>
             
         </form>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/usuario.js"></script>
 </body>
 </html>
