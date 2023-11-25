@@ -116,8 +116,7 @@
                     </div>
                     <div class="form-check">
                         <input type="radio" id="rbtFemenino" class="form-check-input" name="Genero" Value="F"
-                        <?= (ISSET($_POST["Genero"]) && 
-                            $_POST["Genero"]=="F")?"checked":"" ?> required>
+                        <?= $usuario->genero=="F"?"checked":"" ?> required>
                         <label class="form-check-label" for="rbtFemenino">
                             Femenino
                         </label>
@@ -156,8 +155,8 @@
                         <label class="form-check-label" for="chkTecnologia">Tecnología</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="chkCambioClimatico"  name="Intereses[]" 
-                            id="chkCambioClimatico" <?=checkIntereses($usuario,"Cambio climático") ?>>
+                        <input class="form-check-input" type="checkbox" value="CambioClimatico"  name="Intereses[]" 
+                            id="chkCambioClimatico" <?=checkIntereses($usuario,"CambioClimatico") ?>>
                         <label class="form-check-label" for="chkCambioClimatico">Cambio climático</label>
                     </div>
                     <div class="form-check">
