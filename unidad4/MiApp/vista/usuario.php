@@ -15,12 +15,17 @@
 </head>
 <body>
     <?php
+        session_start();
+        if(!ISSET($_SESSION["usuario"])){
+            header("Location:index.html");
+        }
       require('menu.php');
       require_once('../datos/daoUsuario.php');
       require_once('usuarioUtil.php');
     ?>
     <div class="container mt-3">
         <form method="post">
+            <input type="hidden" name="Id" value="<?=$usuario->id?>">
             <div class="row">
                 <div class="col-4">
                     <label for="txtNombre" class="form-label">Nombre:</label>

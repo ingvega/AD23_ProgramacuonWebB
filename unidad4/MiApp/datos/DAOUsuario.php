@@ -117,7 +117,8 @@ class DAOUsuario
 			$obj = null; 
             
 			$sentenciaSQL = $this->conexion->prepare("SELECT id,nombre,apellido1,apellido2 
-            FROM usuarios WHERE email=? AND CAST(password as varchar(28))=CAST(sha224(?) as varchar(28))");
+            FROM usuarios WHERE email=? AND 
+            CAST(password as varchar(28))=CAST(sha224(?) as varchar(28))");
 			//Se ejecuta la sentencia sql con los parametros dentro del arreglo 
             $sentenciaSQL->execute([$correo,$password]);
             
@@ -200,9 +201,10 @@ class DAOUsuario
                       $obj->apellido1,
                       $obj->apellido2,
 					  $obj->email,
-                      $obj->fechaNac,
+                      $obj->fechaNac->format('Y-m-d'),
                       $this->calcularEdad($obj->fechaNac),
-                      $obj->genero=implode(",",$obj->intereses),
+                      $obj->genero,
+                      implode(",",$obj->intereses),
                       $obj->edoCivil,
                       $obj->password,
 					  $obj->id)

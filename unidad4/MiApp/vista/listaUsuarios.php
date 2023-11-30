@@ -19,9 +19,24 @@
 </head>
 <body>
       <?php
+      
+      session_start();
+      if(!ISSET($_SESSION["usuario"])){
+        header("Location:index.html");
+      }
       require('menu.php');
       require_once('../datos/daoUsuario.php');
       $dao=new DAOUsuario();
+
+      if(ISSET($_POST["Id"]) && is_numeric($_POST["Id"])){
+        //Eliminar
+        if($dao->eliminar($_POST["Id"])){
+          echo "Eliminado";
+        }else{
+          echo "No se pudo eliminar";
+        }
+      }
+
       $listaUsuarios=$dao->obtenerTodos();
       
       ?>
@@ -45,7 +60,7 @@
                            "<td>".($usuario->genero=="M"?"Masculino":"Femenino")."</td>".
                            "<td><form method='post'>".
                               "<button formaction='usuario.php' class='btn btn-primary' name='id' value='".$usuario->id."'>Editar</button>".
-                              "<button type='button' class='btn btn-danger' onclick='confirmar(this)' name='id' value='".$usuario->id."'>Eliminar</button>".
+                              "<button type='button' class='btn btn-danger' onclick='confirmar(this)' value='".$usuario->id."'>Eliminar</button>".
                             "</form></td></tr>";
                 }
               ?>
@@ -66,27 +81,14 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-            <button type="button" class="btn btn-danger"  data-bs-dismiss="modal" id="btnConfirmar">Si, continuar con la eliminación</button>
+            <form action="" method="post">
+              <button type="submit" class="btn btn-danger"  data-bs-dismiss="modal" name="Id" id="btnConfirmar">Si, continuar con la eliminación</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal" id="mdlInformacion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title">Catálogo de personas</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            El registro ha sido eliminado
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCerrar">Cerrar</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>-->
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="dt/jQuery-3.7.0/jquery-3.7.0.min.js"></script>

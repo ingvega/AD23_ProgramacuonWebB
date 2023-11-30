@@ -22,9 +22,7 @@
         //Obtener la info del usuario con ese id
         $dao=new DAOUsuario();
         $usuario=$dao->obtenerUno($_POST["id"]);
-        echo "<pre>";
-        var_dump($usuario);
-        echo "</pre>";
+        
     }elseif(count($_POST)>1){
         $valNombre=$valApe1=$valApe2=$valEmail=$valGenero=$valIntereses=$valFechaNac=$valTerminos=$valEstadoCivil=$valPassword="is-invalid";
         $valido=true;
@@ -86,6 +84,7 @@
         }
 
         
+        $usuario->id=ISSET($_POST["Id"])?$_POST["Id"]:0;
         $usuario->nombre=ISSET($_POST["Nombre"])?trim($_POST["Nombre"]):"";
         $usuario->apellido1=ISSET($_POST["Apellido1"])?trim($_POST["Apellido1"]):"";
         $usuario->apellido2=ISSET($_POST["Apellido2"])?trim($_POST["Apellido2"]):"";
@@ -102,11 +101,21 @@
         
             //Usar el método agregar del dao
             $dao= new DAOUsuario();
-            if($dao->agregar($usuario)==0){
-                echo "Error al guardar";
+            if($usuario->id==0){
+                if($dao->agregar($usuario)==0){
+                    echo "Error al guardar";
+                }else{
+                    //Al finalizar el guardado redireccionar a la lista
+                    header("Location: listaUsuarios.php");
+                }
             }else{
-                //Al finalizar el guardado redireccionar a la lista
-                header("Location: listaUsuarios.php");
+                if($dao->editar($usuario)){
+                    //Al finalizar el guardado redireccionar a la lista
+                    header("Location: listaUsuarios.php");
+                }else{
+                    echo "Error al guardar";
+                }
+
             }
         }
 

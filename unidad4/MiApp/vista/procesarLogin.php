@@ -9,7 +9,14 @@
         $usuario=$dao->autenticar($_POST["correo"],$_POST["password"]);
         
         if($usuario){
+            session_start();
+            //session_destroy();
+            $_SESSION["mensajes"]="Hola";
+            $_SESSION["usuario"]=$usuario->id;
+            $_SESSION["nombre"]=$usuario->nombre." ".$usuario->apellido1;
             header("Location: listaUsuarios.php");
+            //Borra una clave
+            UNSET($_SESSION["mensajes"]);
             return;
         }
     }
